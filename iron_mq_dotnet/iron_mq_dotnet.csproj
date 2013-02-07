@@ -55,6 +55,7 @@
     <Compile Include="Queue.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="iron_mq_dotnet.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

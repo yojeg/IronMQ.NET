@@ -1,0 +1,18 @@
+﻿<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>IronMQ.NET</id>
+    <version>$version$</version>
+    <title>IronMQ.NET</title>
+    <authors>coreyauger odeits friism develop7 treeder Eskat0n</authors>
+    <owners>Eskat0n</owners>
+    <licenseUrl>http://www.opensource.org/licenses/mit-license.php</licenseUrl>
+    <projectUrl>http://www.iron.io</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>.NET library for IronMQ</description>
+    <tags>Iron.io IronMQ MQ MessageQueue</tags>
+    <dependencies>
+      <dependency id="Newtonsoft.Json" version="4.5.4" />
+    </dependencies>
+  </metadata>
+</package>
