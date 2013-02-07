@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace io.iron.ironmq.Data
+﻿namespace IronMQ.Data
 {
+    using System;
+
     [Serializable]
     public class QueueMessages
     {

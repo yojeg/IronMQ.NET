@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Script.Serialization;
-using io.iron.ironmq.Data;
-using Newtonsoft.Json;
-
-namespace io.iron.ironmq
+﻿namespace IronMQ
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Data;
+    using Newtonsoft.Json;
+
     /// <summary>
     /// Represends a specific IronMQ Queue.
     /// </summary>

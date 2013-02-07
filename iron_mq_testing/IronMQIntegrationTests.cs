@@ -1,22 +1,17 @@
-﻿using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using io.iron.ironmq;
-using io.iron.ironmq.Data;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace iron_mq_testing
+﻿namespace IronMQ
 {
-    /// <summary>
-    /// Summary description for IronMQUnitTest
-    /// </summary>
+    using System.Configuration;
+    using System.Linq;
+    using Data;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
-    public class IronMQUnitTest
+    public class IronMQIntegrationTests
     {
         private string _projectId = null;
         private string _token = null;
 
-        public IronMQUnitTest()
+        public IronMQIntegrationTests()
         {
             _projectId = ConfigurationManager.AppSettings["IRONIO_PROJECT_ID"];
             _token = ConfigurationManager.AppSettings["IRONIO_TOKEN"];

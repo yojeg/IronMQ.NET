@@ -9,8 +9,8 @@
     <ProjectGuid>{6C45EC64-7EB9-4A09-95E9-03FD6C27D9E0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>iron_mq_testing</RootNamespace>
-    <AssemblyName>iron_mq_testing</AssemblyName>
+    <RootNamespace>IronMQ</RootNamespace>
+    <AssemblyName>IronMQ.NET.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -53,7 +53,7 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IronMQUnitTest.cs" />
+    <Compile Include="IronMQIntegrationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

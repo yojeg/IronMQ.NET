@@ -1,10 +1,9 @@
-﻿using System.Net;
-using System.Web.Script.Serialization;
-
-using io.iron.ironmq.Data;
-
-namespace io.iron.ironmq
+﻿namespace IronMQ
 {
+    using System.Net;
+    using System.Web.Script.Serialization;
+    using Data;
+
     public class Client
     {
         private const string        PROTO =         "https";

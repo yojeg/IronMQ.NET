@@ -1,9 +1,9 @@
-﻿using System;
-using Newtonsoft.Json;
-using System.ComponentModel;
-
-namespace io.iron.ironmq.Data
+﻿namespace IronMQ.Data
 {
+    using System;
+    using Newtonsoft.Json;
+    using System.ComponentModel;
+
     [Serializable]
     [JsonObject]
     public class Message
