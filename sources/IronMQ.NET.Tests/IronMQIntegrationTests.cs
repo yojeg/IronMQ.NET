@@ -31,23 +31,23 @@
 
             ClearQueue(queue);
             // clear_queue
-            queue.push("hello world!");
-            var message = queue.get();
+            queue.Push("hello world!");
+            var message = queue.Get();
             Assert.IsNotNull(message.Id);
             Assert.IsNotNull(message.Body);
 
-            queue.deleteMessage(message.Id);
-            message = queue.get();
+            queue.DeleteMessage(message.Id);
+            message = queue.Get();
             Assert.IsNull(message);
 
-            queue.push("hello world 2!");
+            queue.Push("hello world 2!");
 
-            message = queue.get();
+            message = queue.Get();
             Assert.IsNotNull(message);
 
-            queue.deleteMessage(message.Id);
+            queue.DeleteMessage(message.Id);
 
-            message = queue.get();
+            message = queue.Get();
             Assert.IsNull(message);
         }
 
@@ -61,9 +61,9 @@
             var messages = Enumerable.Range(0, 10)
                 .Select(i => i.ToString(CultureInfo.InvariantCulture))
                 .ToArray();
-            queue.push(messages);
+            queue.Push(messages);
 
-            var actual = queue.get(100);
+            var actual = queue.Get(100);
             Assert.IsNotNull(actual);
             Assert.IsTrue(actual.Count > 1);
         }
@@ -78,11 +78,11 @@
             var messages = Enumerable.Range(0, 10)
                 .Select(i => i.ToString(CultureInfo.InvariantCulture))
                 .ToArray();
-            queue.push(messages);
+            queue.Push(messages);
 
             for (var i = 0; i < 10; i++)
             {
-                var message = queue.get();
+                var message = queue.Get();
                 Assert.IsNotNull(message);
             }
             // Assumption is that if we queued up 1000 and we got back 1000 then it worked fine.
@@ -96,7 +96,7 @@
             var queue = client.Queue(TestQueueName);
             ClearQueue(queue);
             // At this point the queue should be empty
-            queue.clear();
+            queue.Clear();
         }
 
         [Test]
@@ -108,10 +108,10 @@
             var queue = client.Queue(TestQueueName);
             ClearQueue(queue);
 
-            queue.push(messageBody);
-            queue.clear();
+            queue.Push(messageBody);
+            queue.Clear();
 
-            var message = queue.get();
+            var message = queue.Get();
             Assert.IsNull(message);
         }
 
@@ -124,18 +124,18 @@
             var queue = client.Queue(TestQueueName);
             ClearQueue(queue);
 
-            queue.push(body);
+            queue.Push(body);
 
-            var message = queue.get();
+            var message = queue.Get();
             Assert.IsTrue(String.CompareOrdinal(body, message.Body) == 0);
-            queue.deleteMessage(message);
+            queue.DeleteMessage(message);
         }
 
-        private void ClearQueue(Queue q)
+        private static void ClearQueue(Queue q)
         {
             try
             {
-                q.clear();
+                q.Clear();
             }
             catch
             {
