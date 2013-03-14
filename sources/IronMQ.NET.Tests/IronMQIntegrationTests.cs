@@ -27,7 +27,7 @@
         public void BasicTests()
         {
             var client = new Client(_projectId, _token);
-            var queue = client.queue(TestQueueName);
+            var queue = client.Queue(TestQueueName);
 
             ClearQueue(queue);
             // clear_queue
@@ -55,7 +55,7 @@
         public void BulkGetTest()
         {
             var client = new Client(_projectId, _token);
-            var queue = client.queue(TestQueueName);
+            var queue = client.Queue(TestQueueName);
             ClearQueue(queue);
 
             var messages = Enumerable.Range(0, 10)
@@ -72,7 +72,7 @@
         public void BulkPushTest()
         {
             var client = new Client(_projectId, _token);
-            var queue = client.queue(TestQueueName);
+            var queue = client.Queue(TestQueueName);
 
             ClearQueue(queue);
             var messages = Enumerable.Range(0, 10)
@@ -93,7 +93,7 @@
         public void ClearEmptyQueueTest()
         {
             var client = new Client(_projectId, _token);
-            var queue = client.queue(TestQueueName);
+            var queue = client.Queue(TestQueueName);
             ClearQueue(queue);
             // At this point the queue should be empty
             queue.clear();
@@ -105,7 +105,7 @@
             const string messageBody = "This is a test of the emergency broadcasting system... Please stand by...";
 
             var client = new Client(_projectId, _token);
-            var queue = client.queue(TestQueueName);
+            var queue = client.Queue(TestQueueName);
             ClearQueue(queue);
 
             queue.push(messageBody);
@@ -121,7 +121,7 @@
             const string body = "Hello, IronMQ!";
 
             var client = new Client(_projectId, _token);
-            var queue = client.queue(TestQueueName);
+            var queue = client.Queue(TestQueueName);
             ClearQueue(queue);
 
             queue.push(body);

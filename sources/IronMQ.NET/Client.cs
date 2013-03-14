@@ -1,23 +1,24 @@
 ﻿namespace IronMQ
 {
+    using System.IO;
     using System.Net;
     using System.Web.Script.Serialization;
     using Data;
 
     public class Client
     {
-        private const string        PROTO =         "https";
-        private const string        HOST =          "mq-aws-us-east-1.iron.io";
-        private const int           PORT =          443;
-        private const string        API_VERSION =   "1";
+        private const string Protocol = "https";
+        private const string HostDefault = "mq-aws-us-east-1.iron.io";
+        private const int PortDefault = 443;
+        private const string ApiVersion = "1";
 
-        private string projectId = string.Empty;
-        private string token = string.Empty;
+        private readonly string _projectId = string.Empty;
+        private readonly string _token = string.Empty;
 
         public string Host { get; private set; }
         public int Port { get; private set; }
 
-        private JavaScriptSerializer serializer = new JavaScriptSerializer();
+        private readonly JavaScriptSerializer _serializer = new JavaScriptSerializer();
 
         /// <summary>
         /// Constructs a new Client using the specified project ID and token.
@@ -26,12 +27,15 @@
         /// </summary>
         /// <param name="projectId">projectId A 24-character project ID.</param>
         /// <param name="token">token An OAuth token.</param>
-        public Client(string projectId, string token, string host = HOST, int port = PORT)
+        /// <param name="host"></param>
+        /// <param name="port"></param>
+        public Client(string projectId, string token, string host = HostDefault, int port = PortDefault)
         {
-            this.projectId = projectId;
-            this.token = token;
-            this.Host = host;
-            this.Port = port;
+            _projectId = projectId;
+            _token = token;
+
+            Host = host;
+            Port = port;
         }
 
         /// <summary>
@@ -40,7 +44,7 @@
         /// </summary>
         /// <param name="name">param name The name of the Queue to create.</param>
         /// <returns></returns>
-        public Queue queue(string name)
+        public Queue Queue(string name)
         {
             return new Queue (this, name);
         }
@@ -48,62 +52,61 @@
         /// <summary>
         /// Returns list of queues
         /// </summary>
-        /// <param name="page">
-        /// Queue list page
-        /// </param>
-        public string[] queues (int page = 0)
+        /// <param name="page">Queue list page</param>
+        public string[] Queues(int page = 0)
         {
-            string ep = "queues";
-            if (page != 0) {
-                ep += "?page=" + page.ToString ();
-            }
-            return serializer.Deserialize<string[]> (@get (ep));
+            var ep = "queues";
+            if (page != 0)
+                ep += string.Format("?page={0}", page);
+
+            return _serializer.Deserialize<string[]>(Get(ep));
         }
 
-        public string delete(string endpoint)
+        public string Delete(string endpoint)
         {
-            return request("DELETE", endpoint, null);
+            return Request("DELETE", endpoint, null);
         }
 
-        public string get(string endpoint)
+        public string Get(string endpoint)
         {
-            return request("GET", endpoint, null);
+            return Request("GET", endpoint, null);
         }
 
-        public string post(string endpoint, string body)
+        public string Post(string endpoint, string body)
         {
-            return request("POST", endpoint, body);
+            return Request("POST", endpoint, body);
         }
 
-        private string request(string method, string endpoint, string body)
+        private string Request(string method, string endpoint, string body)
         {
-            string path = "/" + API_VERSION + "/projects/" + projectId + "/" + endpoint;
-            string uri = PROTO + "://" + this.Host + ":" + this.Port + path;
-            HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(uri);
+            var path = string.Format("/{0}/projects/{1}/{2}", ApiVersion, _projectId, endpoint);
+            var uri = string.Format("{0}://{1}:{2}{3}", Protocol, Host, Port, path);
+
+            var request = (HttpWebRequest) WebRequest.Create(uri);
+
             request.ContentType = "application/json";
-            request.Headers.Add("Authorization", "OAuth " + token);
+            request.Headers.Add("Authorization", "OAuth " + _token);
             request.UserAgent = "IronMQ .Net Client";
             request.Method = method;
+
             if (body != null)
-            {
-                using (System.IO.StreamWriter write = new System.IO.StreamWriter(request.GetRequestStream()))
+                using (var write = new StreamWriter(request.GetRequestStream()))
                 {
                     write.Write(body);
                     write.Flush();
                 }
-            }
 
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            string json = string.Empty;
-            using (System.IO.StreamReader reader = new System.IO.StreamReader(response.GetResponseStream()))
-            {
+            var response = (HttpWebResponse) request.GetResponse();
+            string json;
+            using (var reader = new StreamReader(response.GetResponseStream()))
                 json = reader.ReadToEnd();
-            }
+
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                Error error = serializer.Deserialize<Error>(json);
-                throw new System.Web.HttpException((int)response.StatusCode, error.msg);
+                var error = _serializer.Deserialize<Error>(json);
+                throw new System.Web.HttpException((int) response.StatusCode, error.msg);
             }
+
             return json;
         }
     }
