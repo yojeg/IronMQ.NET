@@ -5,6 +5,8 @@
     [Serializable]
     public class Error
     {       
+// ReSharper disable InconsistentNaming
         public string msg { get; set; }
+// ReSharper restore InconsistentNaming
     }
 }

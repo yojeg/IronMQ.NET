@@ -5,6 +5,8 @@
     [Serializable]
     public class QueueMessages
     {
+// ReSharper disable InconsistentNaming
         public Message[] messages{ get; set; }       
+// ReSharper restore InconsistentNaming
     }
 }

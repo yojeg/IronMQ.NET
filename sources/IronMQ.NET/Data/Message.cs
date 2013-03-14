@@ -8,6 +8,7 @@
     [JsonObject]
     public class Message
     {
+// ReSharper disable InconsistentNaming
         public string Id { get; set; }
 
         public string Body { get; set; }
@@ -19,6 +20,8 @@
         public long Delay { get; set; }
 
         [DefaultValue(0)] 
+
         public long Expires_In { get; set; }
+// ReSharper restore InconsistentNaming
     }
 }
