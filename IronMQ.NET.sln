@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iron_mq_dotnet", "iron_mq_dotnet\iron_mq_dotnet.csproj", "{8C9AD9D1-225D-4586-8D0B-B9B854ECE88B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iron_mq_dotnet", "sources\IronMQ.NET\iron_mq_dotnet.csproj", "{8C9AD9D1-225D-4586-8D0B-B9B854ECE88B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iron_mq_testing", "iron_mq_testing\iron_mq_testing.csproj", "{6C45EC64-7EB9-4A09-95E9-03FD6C27D9E0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iron_mq_testing", "sources\IronMQ.NET.Tests\iron_mq_testing.csproj", "{6C45EC64-7EB9-4A09-95E9-03FD6C27D9E0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{A2E0FEBC-5707-46CA-8886-3FA37942C342}"
 	ProjectSection(SolutionItems) = preProject
