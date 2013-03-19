@@ -5,7 +5,7 @@
     using System.Web.Script.Serialization;
     using Data;
 
-    public class Client
+    public class Client : IClient
     {
         private const string Protocol = "https";
         private const string HostDefault = "mq-aws-us-east-1.iron.io";
@@ -38,21 +38,11 @@
             Port = port;
         }
 
-        /// <summary>
-        /// Returns a Queue using the given name.
-        /// The network is not accessed during this call.
-        /// </summary>
-        /// <param name="name">param name The name of the Queue to create.</param>
-        /// <returns></returns>
-        public Queue Queue(string name)
+        public IQueue Queue(string name)
         {
             return new Queue (this, name);
         }
 
-        /// <summary>
-        /// Returns list of queues
-        /// </summary>
-        /// <param name="page">Queue list page</param>
         public string[] Queues(int page = 0)
         {
             var ep = "queues";

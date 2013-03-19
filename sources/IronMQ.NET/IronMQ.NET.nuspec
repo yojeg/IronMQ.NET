@@ -4,8 +4,8 @@
     <id>IronMQ.NET</id>
     <version>$version$</version>
     <title>IronMQ.NET</title>
-    <authors>coreyauger, odeits, friism, develop7, treeder, Eskat0n</authors>
-    <owners>Eskat0n</owners>
+    <authors>coreyauger, odeits, friism, develop7, treeder, eskat0n</authors>
+    <owners>eskat0n</owners>
     <licenseUrl>http://www.opensource.org/licenses/mit-license.php</licenseUrl>
     <projectUrl>http://www.iron.io</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>

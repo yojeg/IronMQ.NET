@@ -131,11 +131,11 @@
             queue.DeleteMessage(message);
         }
 
-        private static void ClearQueue(Queue q)
+        private static void ClearQueue(IQueue queue)
         {
             try
             {
-                q.Clear();
+                queue.Clear();
             }
             catch
             {
