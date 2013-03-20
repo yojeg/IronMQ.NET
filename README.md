@@ -38,7 +38,7 @@ default timeout is 60 seconds)
 **Delete** a message from the queue:
 
 ```c#
-queue.deleteMessage(msg);
+queue.DeleteMessage(msg);
 ```
 
 Choosing Cloud
